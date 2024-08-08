@@ -24,13 +24,13 @@ public class Main {
         new Address(sc.next(), sc.next(), sc.next()),
         new Address(sc.next(), sc.next(), sc.next())
     }; 
-    Address maxAddress = new Address("0","0","0");
+    int minAds = 0;
     for(int i = 0; i < n; i++){
-        if ((maxAddress.name.compareTo(ads[i].name)) < 0)  maxAddress = ads[i];
+        if (ads[i].name.compareTo(ads[minAds].name) > 0)  minAds = i;
     }
-    System.out.println("name " + maxAddress.name);
-    System.out.println("addr " + maxAddress.ad);
-    System.out.println("city " + maxAddress.city);
+    System.out.println("name " + ads[minAds].name);
+    System.out.println("addr " + ads[minAds].ad);
+    System.out.println("city " + ads[minAds].city);
     }
 
 }
