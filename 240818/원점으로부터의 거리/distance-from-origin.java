@@ -28,7 +28,7 @@ public class Main {
         for(int i = 0; i<n; i++){
             int x = sc.nextInt();
             int y = sc.nextInt();
-            int distance = (int)Math.pow(x,2) + (int)Math.pow(y,2);
+            int distance = Math.abs(x) + Math.abs(y);
             dots[i] = new Dot(distance, i+1);
         }
         Arrays.sort(dots);
