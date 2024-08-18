@@ -7,7 +7,7 @@ class Dot implements Comparable<Dot> {
     public Dot(int x, int y, int num){
         this.x = x;
         this.y = y;
-        this.distance = (int)Math.pow(x,2) + (int)Math.pow(y,2);
+        this.distance = (int)Math.pow(Math.abs(x),2) + (int)Math.pow(Math.abs(y),2);
         this.num = num;
     }
     @Override
