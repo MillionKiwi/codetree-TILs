@@ -13,7 +13,9 @@ class Dot implements Comparable<Dot> {
     }
     @Override
     public int compareTo(Dot dot){
-        if(this.distance == dot.distance)   return this.num - dot.num;
+        if(this.distance == dot.distance){
+            return this.num - dot.num;
+        }
         return (int)(this.distance - dot.distance);
     }
     
