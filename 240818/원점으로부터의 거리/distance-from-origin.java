@@ -2,13 +2,12 @@ import java.util.*;
 import java.lang.Math;
 
 class Dot implements Comparable<Dot> {
-    int x, y, num;
-    double distance;
+    int x, y, distance, num;
 
     public Dot(int x, int y, int num){
         this.x = x;
         this.y = y;
-        this.distance = Math.pow(x,2) + Math.pow(y,2);
+        this.distance = (int)Math.pow(x,2) + (int)Math.pow(y,2);
         this.num = num;
     }
     @Override
@@ -16,7 +15,7 @@ class Dot implements Comparable<Dot> {
         if(this.distance == dot.distance){
             return this.num - dot.num;
         }
-        return (int)(this.distance - dot.distance);
+        return this.distance - dot.distance;
     }
     
 }
