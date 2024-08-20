@@ -6,7 +6,7 @@ public class Main {
          Scanner sc = new Scanner(System.in);
          int n = sc.nextInt();
 
-         int[] blocks = new int[1000];
+         int[] blocks = new int[10000];
 
          for(int i = 0; i < 1000; i++){
             blocks[i] = 0;
