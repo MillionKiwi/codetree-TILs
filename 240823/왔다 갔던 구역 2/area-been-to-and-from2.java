@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
-        int max = 2000;
+        int max = 25;
         int[] blocks = new int[max];
 
         for(int i = 0; i < max; i++) blocks[i] = 0;
@@ -18,15 +18,23 @@ public class Main {
             String dir = sc.next();
 
             if(dir.equals("R")){
-               for(int j = now; j < now + x - 1; j++){
+               for(int j = now; j < now + x; j++){
                   blocks[j]++;
                }
+               now += x;
             }
             if(dir.equals("L")){
                for(int j = now; j > now - x; j--){
                   blocks[j]++;
                }
+               now -= x;
             }
+            /*
+            for(int k = 0; k < max; k++){
+               System.out.print(blocks[k] + " ");
+            }
+            System.out.println("");
+            */
         }
 
         for(int i = 0; i < max; i++){
