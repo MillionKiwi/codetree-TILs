@@ -5,9 +5,9 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        int offset = 100;
+        int offset = 1000;
         int ans = 0;
-        int [][] blocks = new int[205][205];
+        int [][] blocks = new int[2001][2001];
 
         for(int i = 0; i < 3; i++){
             int x1 = sc.nextInt() + offset;
@@ -23,8 +23,8 @@ public class Main {
             }
         }
 
-        for(int i = 0; i < 205; i++){
-            for(int j = 0; j < 205; j++){
+        for(int i = 0; i < 2001; i++){
+            for(int j = 0; j < 2001; j++){
                 if(blocks[i][j] == 1) ans++;
             }
         }
