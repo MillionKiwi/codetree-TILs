@@ -12,7 +12,7 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         for(int i = 0; i < n; i++){
-            if(i == 0 || arr[i] == arr[i - 1]) ans++;
+            if(i == 0 || arr[i] == arr[i - 1]) ++ans;
         }
 
         System.out.println(ans);
