@@ -17,6 +17,7 @@ public class Main {
             if(i == 0 || arr[i] == arr[i - 1]){
                 maxCnt = Math.max(maxCnt, ++cnt);
             }
+            else cnt = 1;
         }
 
         System.out.println(maxCnt);
