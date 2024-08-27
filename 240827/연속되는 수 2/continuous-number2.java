@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,15 +7,18 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr = new int[n];
-        int ans = 0;
+        int cnt = 0;
+        int maxCnt = 0;
 
         for(int i = 0; i < n; i++){
             arr[i] = sc.nextInt();
         }
         for(int i = 0; i < n; i++){
-            if(i == 0 || arr[i] == arr[i - 1]) ++ans;
+            if(i == 0 || arr[i] == arr[i - 1]){
+                maxCnt = Math.max(maxCnt, ++cnt);
+            }
         }
 
-        System.out.println(ans);
+        System.out.println(maxCnt);
     }
 }
