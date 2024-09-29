@@ -2,47 +2,48 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        char[][] board = new char[3][3];
 
-        // 3x3 보드를 입력받기
-        int[][] board = new int[3][3];
+        // 입력 받기
         for (int i = 0; i < 3; i++) {
-            String line = sc.next();
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = line.charAt(j) - '0';
-            }
+            String line = scanner.nextLine();
+            board[i] = line.toCharArray();
         }
 
-        // 가능한 승리 경우(가로, 세로, 대각선)의 목록
-        List<int[]> lines = new ArrayList<>();
-        
-        // 가로
+        int winningTeams = countWinningTeams(board);
+        System.out.println(winningTeams);
+    }
+
+    private static int countWinningTeams(char[][] board) {
+        Set<String> winningTeams = new HashSet<>();
+
+        // 가로 줄 확인
         for (int i = 0; i < 3; i++) {
-            lines.add(new int[] { board[i][0], board[i][1], board[i][2] });
+            checkLine(board[i][0], board[i][1], board[i][2], winningTeams);
         }
-        
-        // 세로
+
+        // 세로 줄 확인
         for (int j = 0; j < 3; j++) {
-            lines.add(new int[] { board[0][j], board[1][j], board[2][j] });
-        }
-        
-        // 대각선
-        lines.add(new int[] { board[0][0], board[1][1], board[2][2] });
-        lines.add(new int[] { board[0][2], board[1][1], board[2][0] });
-
-        int teamWins = 0;
-
-        for (int[] line : lines) {
-            Set<Integer> uniqueNumbers = new HashSet<>();
-            for (int num : line) {
-                uniqueNumbers.add(num);
-            }
-
-            if (uniqueNumbers.size() == 2) {
-                teamWins++;
-            }
+            checkLine(board[0][j], board[1][j], board[2][j], winningTeams);
         }
 
-       System.out.println(teamWins);
+        // 대각선 확인
+        checkLine(board[0][0], board[1][1], board[2][2], winningTeams);
+        checkLine(board[0][2], board[1][1], board[2][0], winningTeams);
+
+        return winningTeams.size();
+    }
+
+    private static void checkLine(char a, char b, char c, Set<String> winningTeams) {
+        Set<Character> uniqueChars = new HashSet<>();
+        uniqueChars.add(a);
+        uniqueChars.add(b);
+        uniqueChars.add(c);
+
+        if (uniqueChars.size() == 2) {
+            List<Character> chars = new ArrayList<>(uniqueChars);
+            winningTeams.add(chars.get(0) + "" + chars.get(1));
+        }
     }
 }
