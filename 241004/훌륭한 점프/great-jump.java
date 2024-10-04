@@ -3,7 +3,6 @@ import java.util.*;
 public class Main {
     static int n, k;
     static int[] stones;
-    static int minMaxValue = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -16,23 +15,36 @@ public class Main {
             stones[i] = sc.nextInt();
         }
         
-        jump(0, stones[0]);
+        int left = stones[0];
+        int right = 100;  // 주어진 숫자의 최대값
         
-        System.out.println(minMaxValue);
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (canReach(mid)) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        
+        System.out.println(left);
         
         sc.close();
     }
 
-    static void jump(int current, int maxSoFar) {
-        if (current == n - 1) {
-            minMaxValue = Math.min(minMaxValue, maxSoFar);
-            return;
+    static boolean canReach(int maxAllowed) {
+        int current = 0;
+        while (current < n - 1) {
+            boolean moved = false;
+            for (int jump = 1; jump <= k && current + jump < n; jump++) {
+                if (stones[current + jump] <= maxAllowed) {
+                    current += jump;
+                    moved = true;
+                    break;
+                }
+            }
+            if (!moved) return false;
         }
-
-        for (int i = 1; i <= k && current + i < n; i++) {
-            int nextStone = current + i;
-            int newMax = Math.max(maxSoFar, stones[nextStone]);
-            jump(nextStone, newMax);
-        }
+        return true;
     }
 }
