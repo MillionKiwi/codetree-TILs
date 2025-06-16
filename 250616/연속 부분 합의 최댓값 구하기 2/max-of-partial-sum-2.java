@@ -10,8 +10,8 @@ public class Main {
             a[i] = sc.nextInt();
         }
         // Please write your code here.
-        int current_sum = 0;
-        int max_sum = -1000;
+        int current_sum = -1001;
+        int max_sum = -1001;
 
         for(int i =0; i< N; i++){
             current_sum += a[i];
