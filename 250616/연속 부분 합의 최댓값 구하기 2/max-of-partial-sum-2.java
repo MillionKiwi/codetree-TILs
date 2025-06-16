@@ -14,11 +14,8 @@ public class Main {
         int max_sum = -1001;
 
         for(int i =0; i< N; i++){
-            current_sum += a[i];
+            current_sum = Math.max(a[i],current_sum + a[i]);
             max_sum = Math.max(max_sum,current_sum);
-            if(current_sum + a[i] < 0){
-                current_sum = 0;
-            }
         }
 
         System.out.println(max_sum);
